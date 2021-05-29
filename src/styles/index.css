@@ -4,10 +4,16 @@
 
 @import "tailwindcss/utilities";
 
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
 :root {
   --backgroundColor1: #203040;
   --linkHover: #ff8000;
   --textColor1: white;
+  --bt-clr-border: #c0c0c0;
+  --bt-border-hover: #808080;
+  --bt-background1: #f0f0f0;
+  --bt-background-primary: #f0c040;
 }
 
 html {
@@ -19,17 +25,15 @@ body,
 #root {
   height: 100vh;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
 }
 
 body,
 input,
 select,
+button,
 textarea {
   font-size: 1.6rem;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
 }
 
 .grid-container {
@@ -58,4 +62,49 @@ footer {
   grid-area: footer;
   background-color: var(--backgroundColor1);
   color: var(--textColor1);
+}
+
+.content {
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+/* products */
+.products li {
+  flex: 0 1 29rem;
+  height: 47rem;
+  padding: 1rem;
+}
+.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.product img {
+  max-width: 37rem;
+  max-height: 37rem;
+}
+.product-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.product-price div,
+.product-price button {
+  text-align: center;
+}
+.button {
+  padding: 1rem;
+  border: 0.1rem var(--bt-clr-border) solid;
+  border-radius: 10px;
+  font-weight: 600;
+  background-color: var(--bt-background1);
+  cursor: pointer;
+}
+.button:hover {
+  border: 0.1rem var(--bt-border-hover) solid;
+}
+.bt-primary {
+  background-color: var(--bt-background-primary);
 }
