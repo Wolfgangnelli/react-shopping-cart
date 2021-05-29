@@ -1,0 +1,61 @@
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
+
+:root {
+  --backgroundColor1: #203040;
+  --linkHover: #ff8000;
+  --textColor1: white;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body,
+#root {
+  height: 100vh;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+body,
+input,
+select,
+textarea {
+  font-size: 1.6rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.grid-container {
+  grid-template-areas: "header" "main" "footer";
+  grid-template-rows: 5rem 1fr 5rem;
+  grid-template-columns: 1fr;
+}
+
+a:hover {
+  color: var(--linkHover);
+}
+
+header {
+  grid-area: header;
+  background-color: var(--backgroundColor1);
+  color: var(--textColor1);
+}
+header a {
+  color: var(--textColor1);
+  text-decoration: none;
+}
+main {
+  grid-area: main;
+}
+footer {
+  grid-area: footer;
+  background-color: var(--backgroundColor1);
+  color: var(--textColor1);
+}
