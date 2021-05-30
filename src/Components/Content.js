@@ -1,10 +1,20 @@
 import React from "react";
+import Cart from "./Cart";
 import Filter from "./Filter";
 import Products from "./Products";
 
-const Content = ({ products, size, sort, filterProducts, sortProducts }) => {
+const Content = ({
+  products,
+  size,
+  sort,
+  filterProducts,
+  sortProducts,
+  addToCart,
+  cartItems,
+  removeFromCart,
+}) => {
   return (
-    <main>
+    <main className="max-w-screen-2xl mx-auto">
       <div className="content grid">
         <div className="products-content">
           <Filter
@@ -14,9 +24,11 @@ const Content = ({ products, size, sort, filterProducts, sortProducts }) => {
             filterProducts={filterProducts}
             sortProducts={sortProducts}
           />
-          <Products products={products} />
+          <Products products={products} addToCart={addToCart} />
         </div>
-        <div className="cart-sidebar">Cart Items</div>
+        <div className="cart-sidebar">
+          <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
+        </div>
       </div>
     </main>
   );

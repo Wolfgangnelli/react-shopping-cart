@@ -29919,6 +29919,44 @@ footer {
   flex: 1;
 }
 
+/* Cart */
+
+.cart {
+  padding: 1rem;
+  margin: 1rem;
+  display: flex;
+  font-weight: 600;
+}
+
+.cart-header {
+  border-bottom: 0.1rem var(--bt-clr-border) solid;
+}
+
+.cart-items {
+  padding: 0;
+  width: 100%;
+  list-style-type: none;
+}
+
+.cart-items img {
+  width: 5rem;
+  min-width: 40px;
+  min-height: 50px;
+}
+
+.cart-items li {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-items li div {
+  padding: 0.5rem;
+}
+
+.cart-items li div:last-child {
+  flex: 1;
+}
+
 @media (min-width: 640px){
   .sm\:container{
     width: 100%;
