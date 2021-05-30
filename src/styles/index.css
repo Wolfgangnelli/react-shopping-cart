@@ -108,3 +108,13 @@ footer {
 .bt-primary {
   background-color: var(--bt-background-primary);
 }
+
+/*   Filter */
+.filter {
+  padding: 1rem;
+  margin: 1rem;
+  border-bottom: 0.1rem var(--bt-clr-border) solid;
+}
+.filter div {
+  flex: 1;
+}

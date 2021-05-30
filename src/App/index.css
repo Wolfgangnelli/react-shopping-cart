@@ -29907,6 +29907,18 @@ footer {
   background-color: var(--bt-background-primary);
 }
 
+/*   Filter */
+
+.filter {
+  padding: 1rem;
+  margin: 1rem;
+  border-bottom: 0.1rem var(--bt-clr-border) solid;
+}
+
+.filter div {
+  flex: 1;
+}
+
 @media (min-width: 640px){
   .sm\:container{
     width: 100%;
