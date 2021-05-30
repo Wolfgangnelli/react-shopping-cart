@@ -18,11 +18,56 @@ class App extends React.Component {
     };
   }
 
+  filterProducts = (size) => {
+    console.log(size);
+    if (size === "ALL") {
+      this.setState({
+        size: size,
+        products: data.products,
+      });
+    } else {
+      this.setState({
+        size: size,
+        products: data.products.filter(
+          (product) => product.availableSizes.indexOf(size) >= 0
+        ),
+      });
+    }
+  };
+
+  sortProducts = (sort) => {
+    console.log(sort);
+    this.setState((state) => ({
+      sort: sort,
+      products: this.state.products
+        .slice()
+        .sort((a, b) =>
+          sort === "lowest"
+            ? a.price > b.price
+              ? 1
+              : -1
+            : sort === "highest"
+            ? a.price < b.price
+              ? 1
+              : -1
+            : a._id < b._id
+            ? 1
+            : -1
+        ),
+    }));
+  };
+
   render() {
     return (
       <AppLayout>
         <Header />
-        <Content products={this.state.products} />
+        <Content
+          products={this.state.products}
+          size={this.state.size}
+          sort={this.state.sort}
+          filterProducts={this.filterProducts}
+          sortProducts={this.sortProducts}
+        />
         <Footer />
       </AppLayout>
     );
