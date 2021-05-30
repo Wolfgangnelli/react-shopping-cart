@@ -15,6 +15,7 @@ class App extends React.Component {
       products: data.products,
       size: "",
       sort: "",
+      cartItems: [],
     };
   }
 
@@ -57,6 +58,30 @@ class App extends React.Component {
     }));
   };
 
+  removeFromCart = (product) => {
+    const cartItems = this.state.cartItems.slice();
+    this.setState({
+      cartItems: cartItems.filter((item) => item._id !== product._id),
+    });
+  };
+
+  addToCart = (product) => {
+    const cartItems = this.state.cartItems.slice();
+    let alreadyInCart = false;
+    cartItems.forEach((item) => {
+      if (item._id === product._id) {
+        item.count++;
+        alreadyInCart = true;
+      }
+    });
+    if (!alreadyInCart) {
+      cartItems.push({ ...product, count: 1 });
+    }
+    this.setState({
+      cartItems,
+    });
+  };
+
   render() {
     return (
       <AppLayout>
@@ -67,6 +92,9 @@ class App extends React.Component {
           sort={this.state.sort}
           filterProducts={this.filterProducts}
           sortProducts={this.sortProducts}
+          addToCart={this.addToCart}
+          cartItems={this.state.cartItems}
+          removeFromCart={this.removeFromCart}
         />
         <Footer />
       </AppLayout>

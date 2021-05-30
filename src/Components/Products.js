@@ -7,7 +7,11 @@ export default class Products extends Component {
       <div>
         <ul className="products flex justify-center items-center m-0 p-0 list-none flex-wrap">
           {this.props.products.map((product) => (
-            <Product key={product._id} product={product} />
+            <Product
+              key={product._id}
+              product={product}
+              addToCart={this.props.addToCart}
+            />
           ))}
         </ul>
       </div>
