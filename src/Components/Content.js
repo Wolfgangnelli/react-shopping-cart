@@ -12,6 +12,7 @@ const Content = ({
   addToCart,
   cartItems,
   removeFromCart,
+  createOrder,
 }) => {
   return (
     <main className="max-w-screen-2xl mx-auto">
@@ -27,7 +28,11 @@ const Content = ({
           <Products products={products} addToCart={addToCart} />
         </div>
         <div className="cart-sidebar">
-          <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
+          <Cart
+            cartItems={cartItems}
+            removeFromCart={removeFromCart}
+            createOrder={createOrder}
+          />
         </div>
       </div>
     </main>

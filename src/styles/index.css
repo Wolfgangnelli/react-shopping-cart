@@ -102,6 +102,9 @@ footer {
   background-color: var(--bt-background1);
   cursor: pointer;
 }
+.button:focus {
+  outline: none;
+}
 .button:hover {
   border: 0.1rem var(--bt-border-hover) solid;
 }
@@ -150,4 +153,21 @@ footer {
 }
 .cart-items li div:last-child {
   flex: 1;
+}
+
+/* Checkout form */
+
+.form-container {
+  width: 100%;
+  padding: 0;
+  list-style-type: none;
+}
+.form-container li {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+input {
+  padding: 1rem;
+  border: 0.1rem var(--bt-clr-border) solid;
 }
