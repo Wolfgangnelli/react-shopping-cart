@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ItemInCart from "./ItemInCart";
 import { formatCurrency } from "../Helpers/index";
+import Fade from "react-reveal/Fade";
 
 export default class Cart extends Component {
   constructor(props) {
@@ -76,47 +77,49 @@ export default class Cart extends Component {
                 </div>
               </div>
               {this.state.showCheckout ? (
-                <div className="cart">
-                  <form onSubmit={this.createOrder} className="w-full">
-                    <ul className="form-container">
-                      <li>
-                        <label htmlFor="email">Email</label>
-                        <input
-                          type="email"
-                          name="email"
-                          id="email"
-                          required
-                          onChange={this.handleInput}
-                        />
-                      </li>
-                      <li>
-                        <label htmlFor="name">Name</label>
-                        <input
-                          type="text"
-                          name="name"
-                          id="name"
-                          required
-                          onChange={this.handleInput}
-                        />
-                      </li>
-                      <li>
-                        <label htmlFor="address">Address</label>
-                        <input
-                          type="text"
-                          name="address"
-                          id="address"
-                          required
-                          onChange={this.handleInput}
-                        />
-                      </li>
-                      <li>
-                        <button type="submit" className="button bt-primary">
-                          Checkout
-                        </button>
-                      </li>
-                    </ul>
-                  </form>
-                </div>
+                <Fade right cascade>
+                  <div className="flex text-semibold">
+                    <form onSubmit={this.createOrder} className="w-full">
+                      <ul className="form-container">
+                        <li>
+                          <label htmlFor="email">Email</label>
+                          <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            required
+                            onChange={this.handleInput}
+                          />
+                        </li>
+                        <li>
+                          <label htmlFor="name">Name</label>
+                          <input
+                            type="text"
+                            name="name"
+                            id="name"
+                            required
+                            onChange={this.handleInput}
+                          />
+                        </li>
+                        <li>
+                          <label htmlFor="address">Address</label>
+                          <input
+                            type="text"
+                            name="address"
+                            id="address"
+                            required
+                            onChange={this.handleInput}
+                          />
+                        </li>
+                        <li>
+                          <button type="submit" className="button bt-primary">
+                            Checkout
+                          </button>
+                        </li>
+                      </ul>
+                    </form>
+                  </div>
+                </Fade>
               ) : null}
             </div>
           )}

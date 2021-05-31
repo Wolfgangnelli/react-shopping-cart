@@ -29980,6 +29980,17 @@ input {
   border: 0.1rem var(--bt-clr-border) solid;
 }
 
+/* Product Details */
+
+.product-details {
+  max-height: 96vh;
+}
+
+.product-details-description {
+  flex: 1 1;
+  margin: 1rem;
+}
+
 @media (min-width: 640px){
   .sm\:container{
     width: 100%;
