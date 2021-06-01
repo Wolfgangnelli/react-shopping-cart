@@ -28,9 +28,9 @@ export default class Products extends Component {
     return (
       <div>
         <Fade bottom cascade>
-          {this.props.products ? (
+          {this.props.filteredProducts ? (
             <ul className="products flex justify-center items-center m-0 p-0 list-none flex-wrap">
-              {this.props.products.map((product) => (
+              {this.props.filteredProducts.map((product) => (
                 <li key={product._id}>
                   <div className="product">
                     <a

@@ -13,7 +13,7 @@ const composeEnhancers =
 const store = createStore(
   storeReducer,
   { ...initialState },
-  composeEnhancers(applyMiddleware(promise, logger))
+  composeEnhancers(applyMiddleware(promise, logger, thunk))
 );
 
 export default store;

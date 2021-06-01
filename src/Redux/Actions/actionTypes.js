@@ -1,1 +1,3 @@
-export const GET_PRODUCTS = "Get all products";
+export const GET_PRODUCTS = "GET_PRODUCTS";
+export const FILTER_PRODUCTS_BY_SIZE = "FILTER_PRODUCTS_BY_SIZE";
+export const ORDER_PRODUCTS_BY_PRICE = "ORDER_PRODUCTS_BY_PRICE";

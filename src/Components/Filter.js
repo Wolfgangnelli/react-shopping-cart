@@ -1,10 +1,19 @@
 import React from "react";
 
-const Filter = ({ count, size, sort, filterProducts, sortProducts }) => {
-  return (
+const Filter = ({
+  size,
+  sort,
+  filterProducts,
+  sortProducts,
+  filteredProducts,
+  products,
+}) => {
+  return !filteredProducts ? (
+    <div>Loading...</div>
+  ) : (
     <div className="filter flex justify-evenly">
       <div className="filter-result font-bold flex flex-col items-center md:block">
-        {count} <span className="pl-1">Products</span>
+        {filteredProducts.length} <span className="pl-1">Products</span>
       </div>
       <div className="filter-sort">
         <span className="font-semibold">Order: </span>
@@ -12,7 +21,7 @@ const Filter = ({ count, size, sort, filterProducts, sortProducts }) => {
           name="order"
           id="order"
           value={sort}
-          onChange={(e) => sortProducts(e.target.value)}
+          onChange={(e) => sortProducts(filteredProducts, e.target.value)}
         >
           <option value="latest">Latest</option>
           <option value="lowest">Lowest</option>
@@ -25,7 +34,7 @@ const Filter = ({ count, size, sort, filterProducts, sortProducts }) => {
           name="size"
           id="size"
           value={size}
-          onChange={(e) => filterProducts(e.target.value)}
+          onChange={(e) => filterProducts(products, e.target.value)}
         >
           <option value="ALL">ALL</option>
           <option value="XS">XS</option>
