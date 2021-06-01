@@ -12,6 +12,10 @@ export default class Products extends Component {
     };
   }
 
+  componentDidMount() {
+    this.props.getProducts();
+  }
+
   openModal = (product) => {
     this.setState({ product });
   };
@@ -24,34 +28,38 @@ export default class Products extends Component {
     return (
       <div>
         <Fade bottom cascade>
-          <ul className="products flex justify-center items-center m-0 p-0 list-none flex-wrap">
-            {this.props.products.map((product) => (
-              <li key={product._id}>
-                <div className="product">
-                  <a
-                    href={"#" + product._id}
-                    onClick={() => this.openModal(product)}
-                  >
-                    <img src={product.image} alt={product.title} />
-                    <p className="pt-1 text-purple-500 font-semibold">
-                      {product.title}
-                    </p>
-                  </a>
-                  <div className="product-price">
-                    <div className="font-bold text-3xl pl-12">
-                      {formatCurrency(product.price)}
-                    </div>
-                    <button
-                      className="button bt-primary"
-                      onClick={() => this.props.addToCart(product)}
+          {this.props.products ? (
+            <ul className="products flex justify-center items-center m-0 p-0 list-none flex-wrap">
+              {this.props.products.map((product) => (
+                <li key={product._id}>
+                  <div className="product">
+                    <a
+                      href={"#" + product._id}
+                      onClick={() => this.openModal(product)}
                     >
-                      Add To Cart
-                    </button>
+                      <img src={product.image} alt={product.title} />
+                      <p className="pt-1 text-purple-500 font-semibold">
+                        {product.title}
+                      </p>
+                    </a>
+                    <div className="product-price">
+                      <div className="font-bold text-3xl pl-12">
+                        {formatCurrency(product.price)}
+                      </div>
+                      <button
+                        className="button bt-primary"
+                        onClick={() => this.props.addToCart(product)}
+                      >
+                        Add To Cart
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </li>
-            ))}
-          </ul>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <div>Loading...</div>
+          )}
         </Fade>
         {product && (
           <Modal

@@ -1,7 +1,7 @@
 import React from "react";
 import Cart from "./Cart";
 import Filter from "./Filter";
-import Products from "./Products";
+import Products from "../Redux/Containers/products";
 
 const Content = ({
   products,

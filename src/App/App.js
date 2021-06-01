@@ -6,6 +6,8 @@ import Header from "../Components/Header";
 import Content from "../Components/Content";
 import Footer from "../Components/Footer";
 import data from "../data.json";
+import store from "../store";
+import { Provider } from "react-redux";
 
 class App extends React.Component {
   constructor(props) {
@@ -94,21 +96,23 @@ class App extends React.Component {
 
   render() {
     return (
-      <AppLayout>
-        <Header />
-        <Content
-          products={this.state.products}
-          size={this.state.size}
-          sort={this.state.sort}
-          filterProducts={this.filterProducts}
-          sortProducts={this.sortProducts}
-          addToCart={this.addToCart}
-          cartItems={this.state.cartItems}
-          removeFromCart={this.removeFromCart}
-          createOrder={this.createOrder}
-        />
-        <Footer />
-      </AppLayout>
+      <Provider store={store}>
+        <AppLayout>
+          <Header />
+          <Content
+            products={this.state.products}
+            size={this.state.size}
+            sort={this.state.sort}
+            filterProducts={this.filterProducts}
+            sortProducts={this.sortProducts}
+            addToCart={this.addToCart}
+            cartItems={this.state.cartItems}
+            removeFromCart={this.removeFromCart}
+            createOrder={this.createOrder}
+          />
+          <Footer />
+        </AppLayout>
+      </Provider>
     );
   }
 }
