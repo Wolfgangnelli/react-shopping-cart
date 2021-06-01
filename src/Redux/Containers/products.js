@@ -5,6 +5,7 @@ import { getProducts } from "../Actions/products";
 const mapStateToProps = (state, ownProps) => {
   return {
     products: state.products.products,
+    filteredProducts: state.products.filteredProducts,
   };
 };
 const mapDispatchToProps = {
