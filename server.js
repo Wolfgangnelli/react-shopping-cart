@@ -4,6 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const shortid = require("shortid");
+const cors = require("cors");
 
 const app = express();
 //when a new req comes in this server, it trit the body as a json
@@ -15,6 +16,11 @@ mongoose.connect("mongodb://localhost/react-shopping-cart-db", {
   useCreateIndex: true,
   useUnifiedTopology: true,
 });
+
+const corsOpts = {
+  origin: "http://localhost:3000",
+  optionsSuccessStatus: 200,
+};
 
 //define the products model
 // 1° param è nome tabella, 2° param i campi
@@ -31,13 +37,13 @@ const Product = mongoose.model(
 );
 
 //define a first end-point - GET PRODUCTS
-app.get("/api/products", async (req, res) => {
+app.get("/api/products", cors(corsOpts), async (req, res) => {
   const products = await Product.find({});
   res.send(products);
 });
 
 //create a second end-point to create a products, i sending a req from this end-point - CREATE NEW PRODUCT
-app.post("/api/products", async (req, res) => {
+app.post("/api/products", cors(corsOpts), async (req, res) => {
   //create new product and save it in the db
   const newProduct = new Product(req.body);
   const savedProduct = await newProduct.save();
@@ -45,7 +51,7 @@ app.post("/api/products", async (req, res) => {
 });
 
 //last API end-point - DELETE PRODUCT
-app.delete("/api/products/:id", async (req, res) => {
+app.delete("/api/products/:id", cors(corsOpts), async (req, res) => {
   const deletedProduct = await Product.findByIdAndDelete(req.params.id);
   res.send(deletedProduct);
 });
