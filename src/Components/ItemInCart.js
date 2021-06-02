@@ -1,8 +1,10 @@
 import React from "react";
 import { formatCurrency } from "../Helpers";
 import Fade from "react-reveal/Fade";
+import { useStore } from "react-redux";
 
 const ItemInCart = ({ product, removeFromCart }) => {
+  const store = useStore();
   return (
     <Fade left>
       <li className="flex-col md:flex-row">
@@ -17,7 +19,7 @@ const ItemInCart = ({ product, removeFromCart }) => {
             </span>
             <button
               className="mt-2 md:ml-2 button md:right-0"
-              onClick={() => removeFromCart(product)}
+              onClick={() => removeFromCart(store.getState(), product)}
             >
               Remove
             </button>
