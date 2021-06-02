@@ -18,16 +18,12 @@ class App extends React.Component {
     };
   }
 
-  createOrder = (order) => {
-    alert(`Need to save order for ${order.name}`);
-  };
-
   render() {
     return (
       <Provider store={store}>
         <AppLayout>
           <Header />
-          <Content createOrder={this.createOrder} />
+          <Content />
           <Footer />
         </AppLayout>
       </Provider>

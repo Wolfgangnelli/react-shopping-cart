@@ -9,6 +9,14 @@ const cors = require("cors");
 const app = express();
 //when a new req comes in this server, it trit the body as a json
 app.use(express.json());
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
 //mi connetto a mongodb con questo entry-point
 mongoose.connect("mongodb://localhost/react-shopping-cart-db", {
@@ -22,8 +30,8 @@ const corsOpts = {
   optionsSuccessStatus: 200,
 };
 
-//define the products model
-// 1° param è nome tabella, 2° param i campi
+// PRODUCT MODEL
+// 1° param è nome tabella, 2° param i campi/fields
 const Product = mongoose.model(
   "product",
   new mongoose.Schema({
@@ -54,6 +62,45 @@ app.post("/api/products", cors(corsOpts), async (req, res) => {
 app.delete("/api/products/:id", cors(corsOpts), async (req, res) => {
   const deletedProduct = await Product.findByIdAndDelete(req.params.id);
   res.send(deletedProduct);
+});
+
+// ORDER MODEL
+const Order = mongoose.model(
+  "order",
+  new mongoose.Schema(
+    {
+      _id: { type: String, default: shortid.generate },
+      email: String,
+      name: String,
+      address: String,
+      total: Number,
+      cartItems: [
+        {
+          _id: String,
+          title: String,
+          price: Number,
+          count: Number,
+        },
+      ],
+    },
+    {
+      timestamps: true,
+    }
+  )
+);
+// API for create an order
+app.post("/api/orders", cors(corsOpts), async (req, res) => {
+  if (
+    !req.body.data.name ||
+    !req.body.data.email ||
+    !req.body.data.address ||
+    !req.body.data.total ||
+    !req.body.data.cartItems
+  ) {
+    return res.send({ message: "Data is required." });
+  }
+  const order = await Order(req.body.data).save();
+  res.send(order);
 });
 
 const port = process.env.PORT || 5000;
