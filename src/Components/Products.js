@@ -3,11 +3,11 @@ import Fade from "react-reveal/Fade";
 import { formatCurrency } from "../Helpers/index";
 import Modal from "react-modal";
 import Zoom from "react-reveal/Zoom";
-import { useStore } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Products = ({ getProducts, addToCart, filteredProducts }) => {
   const [product, setproduct] = useState(null);
-  const store = useStore();
+  const cart = useSelector((state) => state.cart.cart);
 
   useEffect(() => {
     getProducts();
@@ -43,7 +43,7 @@ const Products = ({ getProducts, addToCart, filteredProducts }) => {
                     </div>
                     <button
                       className="button bt-primary"
-                      onClick={() => addToCart(store.getState(), product)}
+                      onClick={() => addToCart(cart, product)}
                     >
                       Add To Cart
                     </button>
@@ -99,7 +99,7 @@ const Products = ({ getProducts, addToCart, filteredProducts }) => {
                     <button
                       className="button bt-primary"
                       onClick={() => {
-                        addToCart(store.getState(), product);
+                        addToCart(cart, product);
                         closeModal();
                       }}
                     >

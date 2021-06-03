@@ -3,7 +3,7 @@ import Cart from "../Redux/Containers/cart";
 import Filter from "../Redux/Containers/filter";
 import Products from "../Redux/Containers/products";
 
-const Content = ({ createOrder }) => {
+const Content = () => {
   return (
     <main className="max-w-screen-2xl mx-auto">
       <div className="content grid">
@@ -12,7 +12,7 @@ const Content = ({ createOrder }) => {
           <Products />
         </div>
         <div className="cart-sidebar">
-          <Cart createOrder={createOrder} />
+          <Cart />
         </div>
       </div>
     </main>

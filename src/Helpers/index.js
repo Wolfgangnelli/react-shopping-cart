@@ -29,8 +29,8 @@ export const removeFromTheCart = (store, product) => {
   return cartItems;
 };
 
-export const addToTheCart = (store, product) => {
-  const cartItems = store.cart.cart.slice(); //items.slice();
+export const addToTheCart = (cart, product) => {
+  const cartItems = cart.slice(); //items.slice();
   let alreadyInCart = false;
   cartItems.forEach((item) => {
     if (item._id === product._id) {
