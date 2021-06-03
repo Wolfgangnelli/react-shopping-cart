@@ -1,5 +1,5 @@
 {
-  "name": "react-shopping-cart",
+  "name": "react-shopping-cart-t",
   "proxy": "http://localhost:5000",
   "version": "0.1.0",
   "private": true,

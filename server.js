@@ -27,7 +27,8 @@ app.get("/", (req, res) => res.sendFile(__dirname + "/build/index.html"));
 
 //mi connetto a mongodb con questo entry-point
 mongoose.connect(
-  process.env.MONGODB_URL || "mongodb://localhost/react-shopping-cart-db",
+  process.env.MONGODB_URL ||
+    "mongodb+srv://react-shopping-cart-test:KWpfsxSDc7icXQ1T@cluster0.zqklj.mongodb.net/react-shopping-cart-test?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useCreateIndex: true,
