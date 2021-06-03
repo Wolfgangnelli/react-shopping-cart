@@ -18,12 +18,22 @@ app.use((req, res, next) => {
   next();
 });
 
+/**
+ * Render static files inside build folder
+ * Cosi se vado su http://localhost:5000 ho la mia App in production mode, not develop
+ */
+app.use("/", express.static(__dirname + "/build"));
+app.get("/", (req, res) => res.sendFile(__dirname + "/build/index.html"));
+
 //mi connetto a mongodb con questo entry-point
-mongoose.connect("mongodb://localhost/react-shopping-cart-db", {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  process.env.MONGODB_URL || "mongodb://localhost/react-shopping-cart-db",
+  {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  }
+);
 
 const corsOpts = {
   origin: "http://localhost:3000",
