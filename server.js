@@ -9,14 +9,14 @@ const cors = require("cors");
 const app = express();
 //when a new req comes in this server, it trit the body as a json
 app.use(express.json());
-app.use((req, res, next) => {
+/* app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:5000");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
   );
   next();
-});
+}); */
 
 /**
  * Render static files inside build folder
@@ -35,10 +35,10 @@ mongoose.connect(
   }
 );
 
-const corsOpts = {
+/* const corsOpts = {
   origin: "http://localhost:5000",
   optionsSuccessStatus: 200,
-};
+}; */
 
 /**
  *  PRODUCT MODEL
@@ -56,13 +56,16 @@ const Product = mongoose.model(
 );
 
 //define a first end-point - GET PRODUCTS
-app.get("/api/products", cors(corsOpts), async (req, res) => {
-  const products = await Product.find({});
-  res.send(products);
-});
+app.get(
+  "/api/products",
+  /* cors(corsOpts), */ async (req, res) => {
+    const products = await Product.find({});
+    res.send(products);
+  }
+);
 
 //create a second end-point to create a products, i sending a req from this end-point - CREATE NEW PRODUCT
-app.post("/api/products", cors(corsOpts), async (req, res) => {
+app.post("/api/products", async (req, res) => {
   //create new product and save it in the db
   const newProduct = new Product(req.body);
   const savedProduct = await newProduct.save();
@@ -70,7 +73,7 @@ app.post("/api/products", cors(corsOpts), async (req, res) => {
 });
 
 //last API end-point - DELETE PRODUCT
-app.delete("/api/products/:id", cors(corsOpts), async (req, res) => {
+app.delete("/api/products/:id", async (req, res) => {
   const deletedProduct = await Product.findByIdAndDelete(req.params.id);
   res.send(deletedProduct);
 });
@@ -102,7 +105,7 @@ const Order = mongoose.model(
   )
 );
 // API for create an order
-app.post("/api/orders", cors(corsOpts), async (req, res) => {
+app.post("/api/orders", async (req, res) => {
   if (
     !req.body.data.name ||
     !req.body.data.email ||
@@ -117,13 +120,13 @@ app.post("/api/orders", cors(corsOpts), async (req, res) => {
 });
 
 // API for show list of orders
-app.get("/api/orders", cors(corsOpts), async (req, res) => {
+app.get("/api/orders", async (req, res) => {
   const orders = await Order.find({});
   res.send(orders);
 });
 
 // API for delete a order
-app.delete("/api/orders/:id", cors(corsOpts), async (req, res) => {
+app.delete("/api/orders/:id", async (req, res) => {
   const deletedOrder = await Order.findByIdAndDelete(req.params.id);
   res.send(deletedOrder);
 });
