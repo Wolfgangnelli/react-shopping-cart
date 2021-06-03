@@ -10,7 +10,7 @@ const app = express();
 //when a new req comes in this server, it trit the body as a json
 app.use(express.json());
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5000");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
@@ -36,7 +36,7 @@ mongoose.connect(
 );
 
 const corsOpts = {
-  origin: "http://localhost:3000",
+  origin: "http://localhost:5000",
   optionsSuccessStatus: 200,
 };
 
