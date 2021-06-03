@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ItemInCart from "./ItemInCart";
 import { formatCurrency } from "../Helpers/index";
 import Fade from "react-reveal/Fade";
@@ -17,11 +17,6 @@ const Cart = ({
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [address, setaddress] = useState("");
-
-  /*  useEffect(() => {
-    setshowCheckout(false);
-    console.log(cartItems);
-  }, [cartItems]); */
 
   const createAOrder = (e) => {
     e.preventDefault();
