@@ -1,4 +1,4 @@
-import { CREATE_ORDER, CLEAR_ORDER, CLEAR_CART } from "../Actions/actionTypes";
+import { CREATE_ORDER, CLEAR_ORDER, GET_ORDERS } from "../Actions/actionTypes";
 
 const initialState = {};
 
@@ -11,6 +11,10 @@ const orderReducer = (state = initialState, { type, payload }) => {
     case `${CLEAR_ORDER}`:
       return {
         order: null,
+      };
+    case `${GET_ORDERS}_FULFILLED`:
+      return {
+        orders: payload.data,
       };
     default:
       return state;

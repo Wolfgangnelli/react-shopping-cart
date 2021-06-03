@@ -1,20 +1,10 @@
 import React from "react";
-import Cart from "../Redux/Containers/cart";
-import Filter from "../Redux/Containers/filter";
-import Products from "../Redux/Containers/products";
+import Routes from "../routes/routes";
 
 const Content = () => {
   return (
     <main className="max-w-screen-2xl mx-auto">
-      <div className="content grid">
-        <div className="products-content">
-          <Filter />
-          <Products />
-        </div>
-        <div className="cart-sidebar">
-          <Cart />
-        </div>
-      </div>
+      <Routes />
     </main>
   );
 };

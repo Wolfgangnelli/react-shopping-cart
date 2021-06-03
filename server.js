@@ -30,8 +30,9 @@ const corsOpts = {
   optionsSuccessStatus: 200,
 };
 
-// PRODUCT MODEL
-// 1° param è nome tabella, 2° param i campi/fields
+/**
+ *  PRODUCT MODEL
+ */
 const Product = mongoose.model(
   "product",
   new mongoose.Schema({
@@ -64,7 +65,9 @@ app.delete("/api/products/:id", cors(corsOpts), async (req, res) => {
   res.send(deletedProduct);
 });
 
-// ORDER MODEL
+/**
+ * ORDER MODEL
+ */
 const Order = mongoose.model(
   "order",
   new mongoose.Schema(
@@ -101,6 +104,18 @@ app.post("/api/orders", cors(corsOpts), async (req, res) => {
   }
   const order = await Order(req.body.data).save();
   res.send(order);
+});
+
+// API for show list of orders
+app.get("/api/orders", cors(corsOpts), async (req, res) => {
+  const orders = await Order.find({});
+  res.send(orders);
+});
+
+// API for delete a order
+app.delete("/api/orders/:id", cors(corsOpts), async (req, res) => {
+  const deletedOrder = await Order.findByIdAndDelete(req.params.id);
+  res.send(deletedOrder);
 });
 
 const port = process.env.PORT || 5000;

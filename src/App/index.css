@@ -29801,6 +29801,8 @@ video {
   --bt-border-hover: #808080;
   --bt-background1: #f0f0f0;
   --bt-background-primary: #f0c040;
+  --border-table: #dddddd;
+  --bg-row-table: #f2f0f1;
 }
 
 html {
@@ -30009,6 +30011,22 @@ input {
 
 .order-details li div {
   padding: 10px;
+}
+
+/* ORDERS TABLE ADMIN */
+
+td,
+th {
+  border: 1px white solid;
+  text-align: center;
+}
+
+td {
+  padding: 8px;
+}
+
+tbody > tr:nth-child(odd) {
+  background-color: var(--bg-row-table);
 }
 
 @media (min-width: 640px){

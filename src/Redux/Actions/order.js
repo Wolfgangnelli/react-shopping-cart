@@ -1,4 +1,9 @@
-import { CREATE_ORDER, CLEAR_ORDER, CLEAR_CART } from "./actionTypes";
+import {
+  CREATE_ORDER,
+  CLEAR_ORDER,
+  CLEAR_CART,
+  GET_ORDERS,
+} from "./actionTypes";
 import axios from "axios";
 import { API } from "../../config/config";
 
@@ -26,4 +31,9 @@ export const clearCart = () => {
 
 export const clearOrder = () => ({
   type: CLEAR_ORDER,
+});
+
+export const getOrders = () => ({
+  type: GET_ORDERS,
+  payload: axios.get(`${API}/api/orders`),
 });
