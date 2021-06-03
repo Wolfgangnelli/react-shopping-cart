@@ -56,14 +56,11 @@ const Product = mongoose.model(
   })
 );
 
-//define a first end-point - GET PRODUCTS
-app.get(
-  "/api/products",
-  /* cors(corsOpts), */ async (req, res) => {
-    const products = await Product.find({});
-    res.send(products);
-  }
-);
+//define a first end-point - GET PRODUCTS  /* cors(corsOpts), */
+app.get("/api/products", async (req, res) => {
+  const products = await Product.find({});
+  res.send(products);
+});
 
 //create a second end-point to create a products, i sending a req from this end-point - CREATE NEW PRODUCT
 app.post("/api/products", async (req, res) => {
