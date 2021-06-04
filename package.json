@@ -1,5 +1,5 @@
 {
-  "name": "react-shopping-cart-t",
+  "name": "react-shopping-cart",
   "proxy": "http://localhost:5000",
   "version": "0.1.0",
   "private": true,
@@ -62,7 +62,7 @@
     "tailwindcss": "^2.1.2"
   },
   "engines": {
-    "node": "12.4.0",
+    "node": ">=0.10.3 <15",
     "npm": "6.9.0"
   }
 
